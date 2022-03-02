@@ -3,6 +3,8 @@ import GlobalStyles from 'theme/GlobalStyles';
 import darkTheme from 'theme/darkTheme';
 import lightTheme from 'theme/lightTheme';
 import { ThemeProvider } from 'styled-components';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from 'pages/HomePage/HomePage';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -14,6 +16,9 @@ const App = () => {
       <button type='button' onClick={() => setDarkMode(!darkMode)}>
         toggle
       </button>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      </Routes>
     </ThemeProvider>
   );
 };
