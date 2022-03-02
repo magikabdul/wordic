@@ -1,9 +1,9 @@
 import React from 'react';
 
 const App = () => (
-  <>
-    <div>Wordic</div>
-  </>
-)
+  <div>
+    <p>hello</p>
+  </div>
+);
 
 export default App;
