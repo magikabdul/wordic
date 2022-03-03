@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'wordic-front-do-138.68.77.165'
+    }
+
+  }
   stages {
     stage('environment') {
       steps {
