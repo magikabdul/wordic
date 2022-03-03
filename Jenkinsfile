@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'wordic-front-aruba-pl-80.211.243.116'
+      label 'wordic-docker-aruba.pl-176.107.130.223'
     }
 
   }
