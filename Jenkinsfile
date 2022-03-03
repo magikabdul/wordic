@@ -11,7 +11,7 @@ pipeline {
         sh 'uname -a'
         sh 'env'
         sh 'pwd'
-        sh 'docker -v'
+        sh 'sudo docker -v'
       }
     }
 
