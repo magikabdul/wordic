@@ -3,7 +3,7 @@ const lightTheme = {
     primary: '#3F80EA',
     secondary: '#7F838E',
     success: '#4BBF73',
-    info: '#CC8B37',
+    info: '#1F9BCF',
     warning: '#CC8B37',
     danger: '#D9534F',
     text: {
