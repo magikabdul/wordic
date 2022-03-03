@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from 'pages/HomePage/HomePage';
 import NotFoundPage from 'pages/NotFoundPage';
+import LoginPage from 'pages/LoginPage';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -19,6 +20,7 @@ const App = () => {
       </button>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
