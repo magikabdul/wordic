@@ -8,6 +8,7 @@ import HomePage from 'pages/HomePage/HomePage';
 import NotFoundPage from 'pages/NotFoundPage';
 import LoginPage from 'pages/LoginPage';
 import RegisterPage from 'pages/RegisterPage';
+import DashboardPage from 'pages/DashboardPage/DashboardPage';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -15,14 +16,20 @@ const App = () => {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <GlobalStyles theme={darkMode ? darkTheme : lightTheme} />
-      <p>hello</p>
-      <button type='button' onClick={() => setDarkMode(!darkMode)}>
-        toggle
-      </button>
+
       <Routes>
-        <Route path='/' element={<HomePage />} />
+        <Route
+          path='/'
+          element={<HomePage darkMode={darkMode} setDarkMode={setDarkMode} />}
+        />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
+        <Route
+          path='/dashboard'
+          element={
+            <DashboardPage darkMode={darkMode} setDarkMode={setDarkMode} />
+          }
+        />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </ThemeProvider>
