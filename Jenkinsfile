@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'wordic-front-aruba-pl-80.211.243.116'
+    }
+
+  }
   stages {
     stage('environment') {
       steps {
