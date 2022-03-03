@@ -11,7 +11,7 @@ pipeline {
         sh 'hostname'
         sh 'id'
         sh 'whoami'
-        sh 'ip addr show ens160'
+        sh 'ip addr show eth0'
         sh 'cat /etc/os-release'
         sh 'uname -a'
         sh 'env'
