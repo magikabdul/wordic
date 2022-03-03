@@ -29,7 +29,7 @@ pipeline {
     stage('npm install') {
       steps {
         sh 'pwd'
-        sh 'rm -rf ${PWD}/react-frontend/build'
+        sh 'sudo rm -rf ${PWD}/react-frontend/build'
         sh 'docker  run --rm -v ${PWD}/react-frontend:/wordic -w /wordic node:lts-slim npm ci'
       }
     }
