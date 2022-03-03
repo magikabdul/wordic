@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'wordic-docker-aruba.pl-176.107.130.223'
-    }
-
-  }
+  agent any
   stages {
     stage('environment') {
       steps {
