@@ -20,5 +20,11 @@ pipeline {
       }
     }
 
+    stage('git clone') {
+      steps {
+        git(url: 'https://github.com/magikabdul/wordic', branch: 'develop', credentialsId: 'github-magikabdul')
+      }
+    }
+
   }
 }
