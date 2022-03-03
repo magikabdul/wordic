@@ -25,7 +25,7 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'sudo rm -rf ${PWD}/react-frontend/build'
-        sh 'docker  run --rm -v ${PWD}/react-frontend:/wordic -w /wordic node:lts-slim npm ci'
+        sh 'sudo docker  run --rm -v ${PWD}/react-frontend:/wordic -w /wordic node:lts-slim npm ci'
       }
     }
 
