@@ -48,7 +48,11 @@ pipeline {
 
     stage('success') {
       steps {
-        discordSend(webhookURL: DISCORD_WEBHOOK_URL, description: '**Build** #${currentBuild.number}', footer: 'Result - ${currentBuild.currentResult}')
+        discordSend webhookURL: DISCORD_WEBHOOK_URL, 
+          description: '**Build** #${currentBuild.number}', 
+          footer: 'Result - ${currentBuild.currentResult}',
+          result: currentBuild.currentResult,
+          title: 'Wordic',
       }
     }
 
