@@ -49,9 +49,12 @@ pipeline {
 
     stage('success') {
       steps {
-        discordSend(webhookURL: 'discord-webhook', description: '**Build** #${currentBuild.number}', footer: 'Result - ${currentBuild.currentResult}')
+        discordSend(webhookURL: 'DISCORD_WEBHOOK_URL', description: '**Build** #${currentBuild.number}', footer: 'Result - ${currentBuild.currentResult}')
       }
     }
 
+  }
+  environment {
+    DISCORD_WEBHOOK_URL = 'credentials(\'discord-webhook\')'
   }
 }
