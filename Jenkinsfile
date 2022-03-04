@@ -42,19 +42,18 @@ pipeline {
 
     stage('copy resources') {
       steps {
-        sh '''cp -r ${PWD}/react-frontend/build/* /root/wordic-configuration/data
-'''
+        sh 'cp -r ${PWD}/react-frontend/build/* /root/wordic-configuration/data'
       }
     }
 
     stage('success') {
       steps {
-        discordSend(webhookURL: 'DISCORD_WEBHOOK_URL', description: '**Build** #${currentBuild.number}', footer: 'Result - ${currentBuild.currentResult}')
+        discordSend(webhookURL: DISCORD_WEBHOOK_URL, description: '**Build** #${currentBuild.number}', footer: 'Result - ${currentBuild.currentResult}')
       }
     }
 
   }
   environment {
-    DISCORD_WEBHOOK_URL = 'credentials(\'discord-webhook\')'
+    DISCORD_WEBHOOK_URL = credentials('discord-webhook')
   }
 }
