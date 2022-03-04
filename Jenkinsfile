@@ -52,7 +52,7 @@ pipeline {
           description: '**Build** #${currentBuild.number}', 
           footer: 'Result - ${currentBuild.currentResult}',
           result: currentBuild.currentResult,
-          title: 'Wordic',
+          title: 'Wordic'
       }
     }
 
