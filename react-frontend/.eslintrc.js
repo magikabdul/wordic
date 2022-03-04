@@ -29,5 +29,6 @@ module.exports = {
     'react/function-component-definition': [0, { 'arrow-function': 0 }],
     'react/jsx-props-no-spreading': [0],
     'prettier/prettier': 'error',
+    'react/prop-types': [2, { ignore: ['children'] }],
   },
 };
