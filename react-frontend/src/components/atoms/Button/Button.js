@@ -22,12 +22,10 @@ const Button = ({ variant, children }) => {
 
 Button.propTypes = {
   variant: PropTypes.oneOf(['primary', 'secondary']),
-  children: PropTypes.node,
 };
 
 Button.defaultProps = {
   variant: 'primary',
-  children: 'empty',
 };
 
 export default Button;
