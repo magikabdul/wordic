@@ -34,5 +34,11 @@ pipeline {
       }
     }
 
+    stage('npm build') {
+      steps {
+        sh 'sudo docker  run --rm -v ${PWD}/react-frontend:/wordic -w /wordic node:lts-slim npm run build'
+      }
+    }
+
   }
 }
