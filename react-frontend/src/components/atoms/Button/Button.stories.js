@@ -5,7 +5,7 @@ export default {
   title: 'Atoms/Button',
   component: Button,
   argTypes: {
-    variant: {
+    color: {
       control: 'inline-radio',
     },
   },
@@ -15,11 +15,12 @@ const Template = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'primary',
+  children: 'Primary',
+  color: 'primary',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  children: 'primary',
-  variant: 'secondary',
+  children: 'Secondary',
+  color: 'secondary',
 };
