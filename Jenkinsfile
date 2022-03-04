@@ -58,6 +58,6 @@ pipeline {
 
   }
   environment {
-    DISCORD_WEBHOOK_URL = credentials('discord-webhook')
+    DISCORD_WEBHOOK_URL = credentials('discord-wordic')
   }
 }
