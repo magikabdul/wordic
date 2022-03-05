@@ -3,6 +3,8 @@ import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.button`
+  display: flex;
+  align-items: center;
   position: relative;
   padding: 8px 24px;
   font-size: 14px;
@@ -77,7 +79,7 @@ const Circle = styled.span`
   display: none;
 `;
 
-const Button = ({ color, variant, children }) => {
+const Button = ({ color, variant, Icon, children }) => {
   const circleRef = useRef(null);
 
   const btnAnimation = (e) => {
@@ -97,6 +99,7 @@ const Button = ({ color, variant, children }) => {
   return (
     <div onClick={(e) => btnAnimation(e)} aria-hidden='true'>
       <Container color={color} variant={variant}>
+        {Icon && <Icon size={16} style={{ marginRight: 8 }} />}
         {children}
         <Circle ref={circleRef} />
       </Container>
@@ -114,11 +117,13 @@ Button.propTypes = {
     'info',
   ]),
   variant: PropTypes.oneOf(['basic', 'outline']),
+  Icon: PropTypes.elementType,
 };
 
 Button.defaultProps = {
   color: 'primary',
   variant: 'basic',
+  Icon: undefined,
 };
 
 export default Button;

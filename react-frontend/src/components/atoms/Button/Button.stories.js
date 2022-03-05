@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaFacebook } from 'react-icons/all';
 import Button from './Button';
 
 export default {
@@ -10,6 +11,9 @@ export default {
     },
     variant: {
       control: 'inline-radio',
+    },
+    Icon: {
+      control: 'disable',
     },
   },
 };
@@ -28,4 +32,12 @@ OutlineButton.args = {
   children: 'Outline Button',
   color: 'secondary',
   variant: 'outline',
+};
+
+export const IconButton = Template.bind({});
+IconButton.args = {
+  children: 'Icon Button',
+  color: 'success',
+  variant: 'basic',
+  Icon: FaFacebook,
 };
