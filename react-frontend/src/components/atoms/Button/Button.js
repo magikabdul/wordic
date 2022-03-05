@@ -6,7 +6,7 @@ const Container = styled.button`
   display: flex;
   align-items: center;
   position: relative;
-  padding: 8px 24px;
+  padding: ${({ hasText }) => (hasText ? '8px 24px' : '8px')} ;
   font-size: ${({ size }) => {
     switch (size) {
       case 'small':
@@ -88,6 +88,10 @@ const Circle = styled.span`
   display: none;
 `;
 
+const IconBox = styled.div`
+  margin-right: ${({ hasText }) => hasText && '8px'};
+`;
+
 const Button = ({ color, variant, Icon, size, children }) => {
   const circleRef = useRef(null);
 
@@ -107,15 +111,21 @@ const Button = ({ color, variant, Icon, size, children }) => {
 
   return (
     <div onClick={(e) => btnAnimation(e)} aria-hidden='true'>
-      <Container color={color} variant={variant} size={size}>
+      <Container color={color} variant={variant} size={size} hasText={children}>
         {Icon && size === 'small' && (
-          <Icon size={14} style={{ marginRight: 8 }} />
+          <IconBox hasText={children}>
+            <Icon size={14} />
+          </IconBox>
         )}
         {Icon && size === 'medium' && (
-          <Icon size={16} style={{ marginRight: 8 }} />
+          <IconBox hasText={children}>
+            <Icon size={16} />
+          </IconBox>
         )}
         {Icon && size === 'large' && (
-          <Icon size={18} style={{ marginRight: 8 }} />
+          <IconBox hasText={children}>
+            <Icon size={18} />
+          </IconBox>
         )}
         {children}
         <Circle ref={circleRef} />

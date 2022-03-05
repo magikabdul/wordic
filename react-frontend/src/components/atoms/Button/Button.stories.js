@@ -56,3 +56,11 @@ SizeButton.args = {
   Icon: FaFacebook,
   size: 'large',
 };
+
+export const IconButtonWithoutText = Template.bind({});
+IconButtonWithoutText.args = {
+  color: 'danger',
+  variant: 'basic',
+  Icon: FaFacebook,
+  size: 'medium',
+};
