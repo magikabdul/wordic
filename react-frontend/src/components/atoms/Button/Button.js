@@ -92,7 +92,7 @@ const IconBox = styled.div`
   margin-right: ${({ hasText }) => hasText && '8px'};
 `;
 
-const Button = ({ color, variant, Icon, size, children }) => {
+const Button = ({ color, variant, Icon, size, children, onClick }) => {
   const circleRef = useRef(null);
 
   const btnAnimation = (e) => {
@@ -111,7 +111,13 @@ const Button = ({ color, variant, Icon, size, children }) => {
 
   return (
     <div onClick={(e) => btnAnimation(e)} aria-hidden='true'>
-      <Container color={color} variant={variant} size={size} hasText={children}>
+      <Container
+        color={color}
+        variant={variant}
+        size={size}
+        hasText={children}
+        onClick={onClick}
+      >
         {Icon && size === 'small' && (
           <IconBox hasText={children}>
             <Icon size={14} />
@@ -146,6 +152,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(['basic', 'outline']),
   Icon: PropTypes.elementType,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
@@ -153,6 +160,7 @@ Button.defaultProps = {
   variant: 'basic',
   Icon: undefined,
   size: 'medium',
+  onClick: undefined,
 };
 
 export default Button;
