@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useRef } from 'react';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.button`
@@ -12,6 +12,7 @@ const Container = styled.button`
   color: ${({ theme }) => theme.color.buttonText};
   background-color: transparent;
   overflow: hidden;
+  cursor: pointer;
 
   &::after {
     position: absolute;
@@ -28,8 +29,49 @@ const Container = styled.button`
   }
 `;
 
+const zoom = keyframes`
+  to {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+`;
+
+const Circle = styled.span`
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ${zoom} 0.5s;
+  display: none;
+`;
+
 const Button = ({ color, children }) => {
-  return <Container color={color}>{children}</Container>;
+  const circleRef = useRef(null);
+
+  const btnAnimation = (e) => {
+    const top = e.clientY - e.target.offsetTop;
+    const left = e.clientX - e.target.offsetLeft;
+
+    circleRef.current.style.top = `${top}px`;
+    circleRef.current.style.left = `${left}px`;
+    circleRef.current.style.display = 'block';
+
+    setTimeout(() => {
+      circleRef.current.style.display = 'none';
+      return 0;
+    }, 300);
+  };
+
+  return (
+    <div onClick={(e) => btnAnimation(e)} aria-hidden='true'>
+      <Container color={color}>
+        {children}
+        <Circle ref={circleRef} />
+      </Container>
+    </div>
+  );
 };
 
 Button.propTypes = {
