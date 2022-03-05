@@ -8,19 +8,24 @@ export default {
     color: {
       control: 'inline-radio',
     },
+    variant: {
+      control: 'inline-radio',
+    },
   },
 };
 
 const Template = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  children: 'Primary',
+export const BasicButton = Template.bind({});
+BasicButton.args = {
+  children: 'Basic Button',
   color: 'primary',
+  variant: 'basic',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  children: 'Secondary',
+export const OutlineButton = Template.bind({});
+OutlineButton.args = {
+  children: 'Outline Button',
   color: 'secondary',
+  variant: 'outline',
 };

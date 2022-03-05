@@ -7,12 +7,23 @@ const Container = styled.button`
   padding: 8px 24px;
   font-size: 14px;
   font-weight: 500;
-  border: 1px solid transparent;
+  border: ${({ theme, variant, color }) => {
+    if (variant === 'basic') {
+      return '1px solid transparent';
+    }
+    return `1px solid ${theme.color[color]}`;
+  }};
   border-radius: 5px;
-  color: ${({ theme }) => theme.color.buttonText};
+  color: ${({ theme, variant, color }) => {
+    if (variant === 'basic') {
+      return theme.color.buttonText;
+    }
+    return theme.color[color];
+  }};
   background-color: transparent;
   overflow: hidden;
   cursor: pointer;
+  transition: color 0.5s ease-in-out;
 
   &::after {
     position: absolute;
@@ -20,12 +31,31 @@ const Container = styled.button`
     z-index: -1;
     content: '';
     width: 100%;
-    background-color: ${({ theme, color }) => theme.color[color]};
+    background-color: ${({ theme, variant, color }) => {
+      if (variant === 'basic') {
+        return theme.color[color];
+      }
+      return theme.color.buttonText;
+    }};
     transition: all 0.5s ease-in-out;
   }
 
-  &:hover::after {
-    filter: brightness(0.7);
+  &:hover {
+    color: ${({ theme, variant }) => {
+      if (variant === 'outline') {
+        return theme.color.buttonText;
+      }
+      return undefined;
+    }};
+  
+    &::after {
+      filter: ${({ variant }) => variant === 'basic' && 'brightness(0.7)'};
+      background-color: ${({ theme, variant, color }) => {
+        if (variant === 'outline') {
+          return theme.color[color];
+        }
+        return undefined;
+      }};
   }
 `;
 
@@ -47,7 +77,7 @@ const Circle = styled.span`
   display: none;
 `;
 
-const Button = ({ color, children }) => {
+const Button = ({ color, variant, children }) => {
   const circleRef = useRef(null);
 
   const btnAnimation = (e) => {
@@ -66,7 +96,7 @@ const Button = ({ color, children }) => {
 
   return (
     <div onClick={(e) => btnAnimation(e)} aria-hidden='true'>
-      <Container color={color}>
+      <Container color={color} variant={variant}>
         {children}
         <Circle ref={circleRef} />
       </Container>
@@ -83,10 +113,12 @@ Button.propTypes = {
     'warning',
     'info',
   ]),
+  variant: PropTypes.oneOf(['basic', 'outline']),
 };
 
 Button.defaultProps = {
   color: 'primary',
+  variant: 'basic',
 };
 
 export default Button;
