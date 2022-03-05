@@ -7,7 +7,16 @@ const Container = styled.button`
   align-items: center;
   position: relative;
   padding: 8px 24px;
-  font-size: 14px;
+  font-size: ${({ size }) => {
+    switch (size) {
+      case 'small':
+        return '12px';
+      case 'large':
+        return '18px';
+      default:
+        return '14px';
+    }
+  }};
   font-weight: 500;
   border: ${({ theme, variant, color }) => {
     if (variant === 'basic') {
@@ -79,7 +88,7 @@ const Circle = styled.span`
   display: none;
 `;
 
-const Button = ({ color, variant, Icon, children }) => {
+const Button = ({ color, variant, Icon, size, children }) => {
   const circleRef = useRef(null);
 
   const btnAnimation = (e) => {
@@ -98,8 +107,16 @@ const Button = ({ color, variant, Icon, children }) => {
 
   return (
     <div onClick={(e) => btnAnimation(e)} aria-hidden='true'>
-      <Container color={color} variant={variant}>
-        {Icon && <Icon size={16} style={{ marginRight: 8 }} />}
+      <Container color={color} variant={variant} size={size}>
+        {Icon && size === 'small' && (
+          <Icon size={14} style={{ marginRight: 8 }} />
+        )}
+        {Icon && size === 'medium' && (
+          <Icon size={16} style={{ marginRight: 8 }} />
+        )}
+        {Icon && size === 'large' && (
+          <Icon size={18} style={{ marginRight: 8 }} />
+        )}
         {children}
         <Circle ref={circleRef} />
       </Container>
@@ -118,12 +135,14 @@ Button.propTypes = {
   ]),
   variant: PropTypes.oneOf(['basic', 'outline']),
   Icon: PropTypes.elementType,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
 Button.defaultProps = {
   color: 'primary',
   variant: 'basic',
   Icon: undefined,
+  size: 'medium',
 };
 
 export default Button;

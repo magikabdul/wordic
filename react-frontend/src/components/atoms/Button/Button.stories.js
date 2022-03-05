@@ -15,6 +15,9 @@ export default {
     Icon: {
       control: 'disable',
     },
+    size: {
+      control: 'inline-radio',
+    },
   },
 };
 
@@ -25,6 +28,7 @@ BasicButton.args = {
   children: 'Basic Button',
   color: 'primary',
   variant: 'basic',
+  size: 'medium',
 };
 
 export const OutlineButton = Template.bind({});
@@ -32,6 +36,7 @@ OutlineButton.args = {
   children: 'Outline Button',
   color: 'secondary',
   variant: 'outline',
+  size: 'medium',
 };
 
 export const IconButton = Template.bind({});
@@ -40,4 +45,14 @@ IconButton.args = {
   color: 'success',
   variant: 'basic',
   Icon: FaFacebook,
+  size: 'medium',
+};
+
+export const SizeButton = Template.bind({});
+SizeButton.args = {
+  children: 'Size Button',
+  color: 'success',
+  variant: 'basic',
+  Icon: FaFacebook,
+  size: 'large',
 };
