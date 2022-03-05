@@ -14,6 +14,7 @@ const darkTheme = {
       primary: '#202634',
       secondary: '#293042',
     },
+    buttonText: '#fff',
   },
 };
 

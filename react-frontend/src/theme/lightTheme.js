@@ -14,6 +14,7 @@ const lightTheme = {
       primary: '#F7F9FC',
       secondary: '#FFFFFF',
     },
+    buttonText: '#fff',
   },
 };
 
